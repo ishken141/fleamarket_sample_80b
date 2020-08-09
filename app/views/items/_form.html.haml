@@ -1,54 +1,63 @@
 %h1 フォームです
 = form_with model: @item, local: true do |f|
   .form-group.card-title
-    =f.label :images do
+    =f.label :image do
       商品画像
-    =f.file_field :images, class:"form-control"
+    =f.file_field :image, class:"form-control"
   
   .form-group
-    =f.label :name do
+    =f.label :title do
       商品名
-    =f.text_field :name
-  
-  .form-group
-    =f.label :text do
-      商品説明
-    =f.text_field :text
+    =f.text_field :title 
 
-  .form-group
-    =f.label :Category do
-      商品カテゴリー
-    =f.text_field :Category
-
-  .form-group
-    =f.label :brand do
-      ブランド
-    =f.text_field :brand
-
-  .form-group
-    =f.label :status do
-      商品の状態
-    =f.text_field :status
-  
-  .form-group
-    =f.label :deliveryfee do
-      配送料の負担
-    =f.text_field :deliveryfee
-  
-  .form-group
-    =f.label :shippingregion do
-      発送元の地域
-    =f.text_field :shippingregion
-  
-  .form-group
-    =f.label :daysuntilshipping do
-      発送までの日数
-    =f.text_field :daysuntilshipping
-  
   .form-group
     =f.label :price do
       販売価格
     =f.text_field :price
+  
+  .form-group
+    =f.label :text do
+      商品説明
+    =f.text_field :text 
+
+  .form-group
+    =f.label :stock do
+      在庫
+    =f.text_field :stock 
+
+  .form-group
+    =f.label :brand do
+      ブランド
+    =f.text_field :brand 
+
+  .form-group
+    =f.label :condition do
+      状態
+    =f.text_field :condition 
+  
+  = f.hidden_field :user_id, { value: 12 } 
+  = f.hidden_field :delivery_id, { value: 8 } 
+  = f.hidden_field :category_id, { value: 8 }
+
+  -# .form-group
+  -#   =f.label :brand do
+  -#     デリバリー
+  -#   =f.text_field :delivery
+
+  -# .form-group
+  -#   =f.label :shippingregion do
+  -#     発送元の地域
+  -#   =f.text_field :shippingregion
+
+  -# .form-group
+  -#   =f.label :Category do
+  -#     商品カテゴリー
+  -#   =f.text_field :Category
+
+  -# .form-group
+  -#   =f.label :daysuntilshipping do
+  -#     発送までの日数
+  -#   =f.text_field :daysuntilshipping
   
   .form-group
     =f.submit "出品"

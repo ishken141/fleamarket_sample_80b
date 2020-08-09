@@ -16,12 +16,9 @@ class ItemsController < ApplicationController
   
   #商品情報
   def create
-    @item = Item.new(item_params)
-  if @item.save 
+    @item = Item.new(item_params) 
+    @item.save
     redirect_to root_path
-  else
-    render :new
-  end
   end
   
   #商品編集
@@ -46,7 +43,9 @@ class ItemsController < ApplicationController
   #ストロングパラメーター
   private
   def item_params
-    params.require(:item).permit(
+    params.require(:item).permit( 
+      :id, 
+      # :image, 
       :title,
       :price,
       :text,
@@ -56,7 +55,7 @@ class ItemsController < ApplicationController
       :user_id,
       :delivery_id,
       :category_id,
-      images_attributes:  [:image, :_destroy, :id],
+      # images_attributes:  [:image, :_destroy, :id],
     )
   end
 
