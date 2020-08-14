@@ -4,15 +4,15 @@
       = @name
     .mypage 
       %p.mypage_new
-        = link_to "プロフィール", root_path
+        = link_to "プロフィール"
       %p.mypage_edit 
         - if user_signed_in? && current_user.id == @profile.id  
           = link_to "自己紹介", edit_user_profile_path(current_user)
         -else 
-          = link_to "自己紹介", root_path
+          = link_to "自己紹介"
     .content_1  
       .content_left
-        %h1.user_name 
+        %h1.user_name  
           = link_to "クレジットカード情報", new_card_path, method: :get 
         %h1.user_area= "配送元地域：福岡" 
         %h1.user_count= "出品数：#{@items.count}"
@@ -42,32 +42,6 @@
               = "商品の状態：#{item.condition}"  
             %li.user.leadtime
               = "配送目安：#{item.leadtime}日"
-    -# .card
-    -#   .card-menu
-    -#     - if user_signed_in? && current_user.id == @items_id
-    -#       .card-edit
-    -#         = link_to "プロフィールを編集", root_path
-    -#       .card-delete
-    -#         = link_to "プロフィールを削除", root_path 
-    -# .contents 
-    -#   %h1.user_name 
-    -#   - @items.first(5).each do |item| 
-    -#     %h2.user_images 
-    -#       - item.images.each do |image|  
-    -#         = image_tag image.image.url, class: "item_image" if image.image.present?   
-    -#     %ul.user_info     
-    -#       %li.user.title 
-    -#         = "商品名：#{item.title}" 
-    -#       %li.user.price
-    -#         = "¥#{item.price}" 
-    -#       %li.user.stock   
-    -#         = "在庫：#{item.stock}個"  
-    -#       %li.user.brand
-    -#         = "ブランド：#{item.brand}"  
-    -#       %li.user.condition
-    -#         = "商品の状態：#{item.condition}"  
-    -#       %li.user.leadtime
-    -#         = "配送目安：#{item.leadtime}日"
         
 
 

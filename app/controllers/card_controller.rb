@@ -5,7 +5,7 @@ class CardController < ApplicationController
 
   require "payjp"
 
-  def new
+  def new 
     card = Credit.where(user_id: current_user.id)
     redirect_to action: "show" if card.exists?
   end
