@@ -7,7 +7,7 @@
       .card-edit
         = link_to "編集する", edit_item_path
       .card-delete
-        = link_to "削除する", item_path(@item), method: :delete, class: "item_delete", data: { confirm: "本当に削除しますか？" }
+        = link_to "削除する", item_path(@item), method: :delete, class: "item-delete", data: { confirm: "本当に削除しますか？" }
   .card-title
     %h1.text-title
       %span.card-text
