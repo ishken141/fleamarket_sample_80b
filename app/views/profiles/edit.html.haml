@@ -1,0 +1,12 @@
+
+-# パンくず
+- breadcrumb :profiles
+
+.contents
+  = form_with model: [@user, @profile], local: true do |f| 
+    %h2.profile.image プロフィール画像
+    = f.file_field :image, class: "image-select"
+    %h2.profile.text 自己紹介
+    = f.text_area :text, rows: 8, cols: 30, class: "form-area"
+    = f.submit "作成", class: "button"
+

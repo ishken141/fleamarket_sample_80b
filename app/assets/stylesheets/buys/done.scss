@@ -1,0 +1,73 @@
+// @include box1;
+@mixin box1 {
+  height: 100px;
+  width: 100%;
+  padding-top: 20px;
+  border-bottom: 2px solid gray;
+}
+
+// @include box2;
+@mixin box2 {
+  height: 100px;
+  width: 100%;
+  // padding-top: 20px;
+  border-bottom: 2px solid gray;
+}
+
+// 購入ボタン用
+// @include box3;
+@mixin box3 {
+  height: 100px;
+  width: 100%;
+  padding-top: 40px;
+}
+
+
+// 以下より-----------------------
+.done {
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  text-align: center;
+  padding: 20px 20px;
+  // background-color: royalblue;
+
+  // 1.「購入完了しました！」
+  &__box1 {
+    @include box1;
+    font-size: 20px;
+  }
+
+  // 2.購入情報
+  &__box2 {
+    @include box2;
+    font-size: 20px;
+    display: flex;
+    &--image {
+      height: 100%;
+      width: 30%;
+    }
+    &--info {
+      padding: 20px 20px;
+    }
+  }
+
+  // 3.「トップページに戻る」
+  &__box3 {
+    @include box3;
+    &--box {
+      height: 50px;
+      width: 250px;
+      margin: auto;
+      border: none;
+      border-radius: 5px;
+      padding-top: 9px;
+      background-color: #3CCACE;
+    }
+    .topBack {
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}

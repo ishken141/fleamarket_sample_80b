@@ -1,0 +1,35 @@
+-# = form_with model: @buy do
+-#   :plain
+-#   %script{type: "text/javascript", src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "購入する", "data-key": "pk_test_31d4180a73af244259d7daf0"}
+
+.confirm-box
+  .confirm-box__info
+    .confirm-box__info--1
+      %h2.confirm 購入を確定しますか？
+    -# 商品情報
+    .confirm-box__info--2
+      .confirm-box__info--2--image
+        - @item.images.first(1).each do |image|
+          = image_tag image.image.url, height: "100%", width: "100%", class: "item_image" if image.image.present?
+      .confirm-box__info--2--titpre
+        %p.title 
+          = @item.title
+        %p.price
+          ¥ 
+          = @item.price
+
+  .confirm-box__credit
+    %h3.how 支払い方法
+    - if @default_card_information.blank?
+      %br /
+    - else
+      -#以下カード情報を表示
+      = "**** **** **** " + @default_card_information.last4
+      - exp_month = @default_card_information.exp_month.to_s
+      - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+      = exp_month + " / " + exp_year
+
+  .confirm-box__addBtn
+    .confirm-box__addBtn--btnBox
+      = form_tag(action: :pay, method: :post) do
+        %button.purchase 購入する

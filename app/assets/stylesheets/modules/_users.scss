@@ -1,0 +1,127 @@
+.header { 
+  .profile_name { 
+    display: flex;
+    font-size: 60px; 
+    font-weight: bold; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center; 
+    margin-bottom: 40px; 
+    margin-left: 150px;
+    margin-top: 10px;
+  } 
+    .profile_image { 
+      float: right;
+    .photo { 
+      width: 300px; 
+      height: 300px; 
+      border-radius: 50%; 
+    }
+  }   
+  .selfy { 
+    background-color: lightgray;
+    width: 100px; 
+    color: #fff;
+    padding: 2px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 15px;
+  }
+}
+
+    .content_1 {    
+      width: 100%;     
+      margin-bottom: 10px;
+      .content_left {  
+        background-color: #f5f5f5; 
+        color:  #000;
+        width: 50%; 
+        float: left; 
+        height: 200px; 
+        border: 3px solid #fff; 
+        .user_created_at {   
+          color: #000;
+          font-size: 20px;
+          font-weight: bold; 
+          margin-left: 20px;
+          margin-top: 18px;
+        }
+        .user_name {   
+          margin-right: 0px;
+          color: #000;
+          font-size: 20px;
+          font-weight: bold; 
+          margin-left: 20px;
+        } 
+        .user_area { 
+          font-size: 20px;  
+          font-weight: bold; 
+          margin-left: 20px;
+        } 
+        .user_count{ 
+          font-size: 20px; 
+          font-weight: bold; 
+          margin-left: 20px;
+        } 
+        .user_like {  
+          font-size: 20px; 
+          font-weight: bold;
+          margin-left: 20px; 
+        }  
+      } 
+      .content_right { 
+        width: 50%; 
+        float: right;
+        color: #000; 
+        background-color: #f5f5f5; 
+        border: 3px solid #fff;
+        .user_introduce { 
+          padding-top: 10px;   
+          height: 200px; 
+          font-size: 18px;
+        } 
+      } 
+    }
+    .between{    
+      display: flex; 
+      justify-content: center; 
+      width: 100%; 
+      background-color: #48d1cc; 
+      padding: 10px 20px;  
+      border-radius: 5px; 
+      color: #f5f5f5; 
+      font-size: 20px; 
+      font-weight: bold; 
+      text-align: center; 
+      margin-bottom: 0px;
+    }  
+.container {
+  .index_mypage{  
+    display: flex; 
+    justify-content: flex-start;
+    .content_2 {   
+      height: 500px;
+      margin-top: 20px; 
+      margin-bottom: 50px;
+      .content { 
+        .user_images {   
+          height: 200px;  
+          .item_image { 
+            width: 300px; 
+            height: 200px; 
+            border: 1px solid #fff; 
+          }
+        } 
+        .user_info {    
+          padding-top: 10px;   
+          background-color: #f5f5f5; 
+          font-size: 15px; 
+          border: solid 1px #fff; 
+          width: 300px; 
+          font-weight: bold;
+          padding-left: 20px; 
+          padding-right: 5px; 
+        }   
+      }
+    } 
+  }   
+} 

@@ -1,0 +1,74 @@
+-# パンくず
+- breadcrumb :users
+
+.container
+  .wrapper 
+    .header 
+      .profile_name
+        = @name
+      .profile_image 
+        = image_tag @profile.image.url, class: "photo" if @profile.image.present?                     
+      .selfy
+        %p.mypage_edit
+          - if user_signed_in? && current_user.id = @profile.id
+            = link_to "自己紹介編集", edit_user_profile_path(@current_user.id, @profile.id)
+          -else
+            = link_to "自己紹介編集", root_path
+    .content_1
+      .content_left
+        %h1.user_created_at= "登録日：#{@created_at.strftime("%Y年%-m月%-d日")}" 
+        %h1.user_area= "配送元地域：#{@address.area}" 
+        %h1.user_count= "現在の出品数：#{@items.count}"
+        %h1.user_name  
+          - if user_signed_in? && current_user.id == @user.id
+            = link_to "クレジットカード情報", new_card_path, method: :get  
+          - else  
+            = link_to "クレジットカード情報(本人のみ)"
+        %h1.user_like 
+          - if user_signed_in? && current_user.id
+            = link_to "いいね！した商品をみる", likes_users_path, method: :get  
+          - else 
+            = link_to "いいね！した商品をみる(本人のみ)"
+      .content_right
+        %h1.user_introduce
+          = @profile.text
+    .between
+      %p.between_image
+
+  
+        = link_to "出品一覧", root_path 
+.container 
+  .index_mypage         
+    .content_2  
+      - @items.each do |item|  
+        .content  
+          %h2.user_images  
+            - item.images.each do |image|  
+              = image_tag image.image.url, class: "item_image" if image.image.present?                     
+          %ul.user_info  
+            %li.user.created_at 
+              = "登録日：#{item.created_at.strftime("%Y年%-m月%-d日")}"  
+            %li.user.title 
+              商品名：
+              = link_to item.title, item_path(item) 
+            %li.user.price
+              = "現在の価格：¥#{item.price}" 
+            %li.user.stock   
+              = "在庫：#{item.stock}個"  
+            %li.user.brand
+              = "ブランド：#{item.brand}"  
+            %li.user.condition
+              = "商品の状態：#{item.condition}"  
+            %li.user.leadtime
+              = "配送目安：#{item.leadtime}日" 
+            %li.user.leadtime
+              = "いいね数：#{item.liked_users.count}個"
+            %li.user.leadtime
+              = "コメント数：#{item.comments.count}個"
+
+
+
+
+
+
+

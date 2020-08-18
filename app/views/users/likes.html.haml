@@ -1,0 +1,37 @@
+-# パンくず
+- breadcrumb :likes
+
+.container  
+  .wrapper
+    .upper          
+      %p.between_image
+        = link_to "#{current_user.name}さんがいいねした商品一覧", root_path 
+.container 
+  .index_mypage         
+    .content_2  
+      - current_user.liked_items.each do |item|  
+        .content  
+          %h2.user_images  
+            - item.images.each do |image|  
+              = image_tag image.image.url, class: "item_image" if image.image.present?                     
+          %ul.user_info  
+            %li.user.created_at 
+              = "登録日：#{item.created_at.strftime("%Y年%-m月%-d日")}"  
+            %li.user.title 
+              商品名：
+              = link_to item.title, item_path(item) 
+            %li.user.price
+              = "現在の価格：¥#{item.price}" 
+            %li.user.stock   
+              = "在庫：#{item.stock}個"  
+            %li.user.brand
+              = "ブランド：#{item.brand}"  
+            %li.user.condition
+              = "商品の状態：#{item.condition}"  
+            %li.user.leadtime
+              = "配送目安：#{item.leadtime}日" 
+            %li.user.leadtime
+              = "いいね数：#{item.liked_users.count}個"
+            %li.user.leadtime
+              = "コメント数：#{item.comments.count}個"
+

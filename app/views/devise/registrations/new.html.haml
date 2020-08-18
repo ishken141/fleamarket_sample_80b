@@ -1,0 +1,21 @@
+.Devise.form
+  .Devise__main
+    .Devise__header
+      ユーザー情報登録
+    = form_for(@user,url: user_registration_path) do |f|
+      = render "devise/shared/error_messages", resource: @user
+      .field.text-input
+        = f.text_field :name, autofocus: true, placeholder: "USER NAME"
+        %span.separator
+      .field.text-input
+        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "EMAIL"
+        %span.separator
+      .field.text-input
+        = f.password_field :password, autocomplete: "new-password", placeholder: "PASSWORD #{@minimum_password_length}characters minimum"
+        %span.separator
+      .field.text-input
+        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "ONE MORE PASSWORD"
+        %span.separator
+      .actions.form-bottom
+        = f.submit "Next"
+    = render "devise/shared/links"

@@ -1,0 +1,140 @@
+// @include required;
+@mixin required {
+  display: inline-block;
+  height: 20px;
+  width: 35px;
+  color: white;
+  font-size: 13px;
+  border-radius: 4px;
+  text-align: center;
+  background-color: red;
+}
+
+// @include box;
+@mixin box {
+  height: 150px;
+  padding: 10px 0;
+}
+
+// @include box2;
+@mixin box2 {
+  height: 130px;
+  padding: 10px 0;
+}
+
+// @include form;
+@mixin form {
+  height: 60px;
+  width: 100%;
+  border: solid 1px gray;
+  border-radius: 4px;
+  padding: 0 15px;
+}
+
+// @include form2;
+@mixin form2 {
+  height: 60px;
+  width: 35%;
+  border: solid 1px gray;
+  border-radius: 4px;
+  font-weight: bold;
+  padding: 0 15px;
+}
+
+
+// 以下より----------------------
+.credit {
+  height: 600px;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  // クレジットカード情報入力
+  &__text {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+  }
+  // 全フォーム
+  &__form {
+    height: 550px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 20px;
+    &--cardNumber {
+      // 1.カード番号フォーム
+      &--box {
+        @include box;
+        // background-color: coral;
+        .card-number {
+          font-weight: bold;
+        }
+        .required {
+          @include required;
+        }
+        // フォーム
+        &--field {
+          margin: 10px 0;
+          .number {
+            @include form;
+          }
+        }
+      }
+      // 2.有効期限フォーム
+      &--date {
+        @include box2;
+        .expiration-date {
+          font-weight: bold;
+        }
+        .required2 {
+          @include required;
+        }
+        // フォーム2
+        &--form1 {
+          display: flex;
+          margin-top: 10px;
+          .expiration-text {
+            margin: auto;
+          }
+          #exp_month {
+            @include form2;
+          }
+          #exp_year {
+            @include form2;
+          }
+        }
+      }
+      // 3.セキュリティーコード
+      &--security {
+        @include box2;
+        .security-code {
+          font-weight: bold;
+        }
+        .required3 {
+          @include required;
+        }
+        &--form2 {
+          margin-top: 10px;
+          #cvc {
+            @include form;
+          }
+        }
+      }
+      // 4.「追加する」ボタン
+      &--btn {
+        // margin-top: 10px;
+        height: 120px;
+        .submit-btn {
+          height: 60px;
+          width: 100%;
+          border: none;
+          border-radius: 4px;
+          color: white;
+          font-weight: bold;
+          font-size: 20px;
+          background-color: #3CCACE;
+        }
+      }
+    }
+  }
+}

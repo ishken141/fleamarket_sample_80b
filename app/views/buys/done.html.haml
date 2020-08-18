@@ -1,0 +1,22 @@
+.done
+  // 1.「購入完了しました！」
+  .done__box1
+    %h2 購入が完了しました！
+  
+  // 2.購入情報
+  .done__box2
+    .done__box2--image
+      - @item.images.first(1).each do |image|
+        = image_tag image.image.url, height: "100%", width: "100%", class: "item_image" if image.image.present?
+    .done__box2--info
+      %p.title
+        = @item.title
+      %p.price
+        ¥
+        = @item.price
+
+  // 3.「トップページに戻る」
+  .done__box3
+    .done__box3--box
+      = link_to root_path, class: "topBack" do
+        トップページに戻る

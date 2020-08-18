@@ -1,0 +1,84 @@
+// @include box1;
+@mixin box1 {
+  height: 100px;
+  width: 100%;
+  padding-top: 20px;
+  border-bottom: 2px solid gray;
+}
+
+// @include box2;
+@mixin box2 {
+  height: 100px;
+  width: 100%;
+  // padding-top: 20px;
+  border-bottom: 2px solid gray;
+}
+
+// 購入ボタン用
+// @include box3;
+@mixin box3 {
+  height: 100px;
+  width: 100%;
+  padding-top: 20px;
+}
+
+// 以下より---------------------------------
+// 全体
+.confirm-box {
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  text-align: center;
+  padding: 20px 20px;
+  // background-color: royalblue;
+
+  &__info {
+    // 1.「購入を確定しますか？」
+    &--1 {
+      @include box1;
+      font-size: 20px;
+      // background-color: salmon;
+    }
+    // 2.購入商品情報
+    &--2 {
+      @include box2;
+      display: flex;
+      // background-color: green;
+      &--image {
+        height: 100%;
+        width: 30%;
+        // background-color: yellow;
+      }
+      &--titpre {
+        padding: 20px 20px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  // 3.支払い方法
+  &__credit {
+    @include box1;
+    // background-color: salmon;
+  }
+
+  //.4,購入ボタン
+  &__addBtn {
+    @include box3;
+    // background-color: yellow;
+    &--btnBox {
+      height: 50px;
+      width: 200px;
+      margin: auto;
+      border: none;
+      border-radius: 5px;
+      background-color: #3CCACE;
+      .purchase {
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        padding-top: 15px;
+      }
+    }
+  }
+}

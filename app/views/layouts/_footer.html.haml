@@ -1,0 +1,37 @@
+.footer
+  .footer__index
+    .footer__index--box1
+      .footer__index--box1--aboutApp
+        アプリについて
+      %ul.info1
+        %li.companyInfo
+          = link_to "会社概要（運営会社）", "#", class: "company"
+        %li.privacyInfo
+          = link_to "プライバシーポリシー", "#", class: "privacy"
+        %li.termsInfo
+          = link_to "利用規約", "#", class: "teams"
+        %li.pointInfo
+          = link_to "ポイントに関する特約", "#", class: "point"
+    .footer__index--box2
+      .footer__index--box2--searchApp
+        アプリを見る
+      %ul.info2
+        %li.cateIndex
+          = link_to "カテゴリー一覧", "#", class: "category"
+        %li.brandIndex
+          = link_to "ブランド一覧", "#", class: "brand"
+    .footer__index--box3
+      .footer__index--box3--helpGuide
+        ヘルプ＆ガイド
+      %ul.info3
+        %li.guideInfo
+          = link_to "アプリガイド", "#", class: "guide"
+        %li.logoInfo
+          = link_to "アプリロゴ利用ガイドライン", "#", class: "logoGuide"
+        %li.infomation
+          = link_to "お知らせ", "#", class: "infoma"
+  .footer__bottom
+    .footer__bottom--appLogo
+      = link_to image_tag ( 'logo-white.png'), size: "210x60", class: "app"
+    .footer__bottom--copyright
+      ©︎FURIMA

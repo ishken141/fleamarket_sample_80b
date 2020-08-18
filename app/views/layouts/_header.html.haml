@@ -1,0 +1,31 @@
+.header
+  .header__headerBox
+    .header__headerBox--appIcon
+      = link_to root_path do
+        = image_tag ( "logo.png") , size: "200×90", class: "iconBtn"
+    .header__headerBox--searchBox
+      .header__headerBox--searchBox--formBox
+        = form_with(url: search_items_path, local: true, method: :get, class: "Form") do |f|
+          = f.text_field :keyword, class: "Form__input", placeholder: "キーワードから探す"
+          = button_tag type:"submit", class: "Form__submit" do
+            = link_to image_tag ( "icon-search1.png") , class: "submit_image"
+  .header__headerBox2
+    .header__headerBox2--various
+      %ul.focus
+        %li.focus__category
+          = link_to "カテゴリー", "#", class: "cateBtn"
+        %li.focus__brand
+          = link_to "ブランド", "#", class: "brandBtn"
+      %ul.log
+        - if user_signed_in?
+          %li.log__signIn
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "マイページ", user_path(current_user)
+        - else
+          %li.log__signIn
+            = link_to "新規登録", new_user_registration_path
+            = link_to "ログイン", new_user_session_path
+
+        = link_to new_item_path, class: "log__new" do
+          出品する
+          = image_tag "icon_camera.png", class: "camera"

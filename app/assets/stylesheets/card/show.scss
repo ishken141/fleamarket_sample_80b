@@ -1,0 +1,64 @@
+// @include box1;
+@mixin box1 {
+  height: 100px;
+  width: 100%;
+  padding-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 2px solid gray;
+}
+
+// @include box2;
+@mixin box2 {
+  height: 100px;
+  width: 100%;
+  border-bottom: 2px solid gray;
+}
+
+// 購入ボタン用
+// @include box3;
+@mixin box3 {
+  height: 100px;
+  width: 100%;
+  padding-top: 40px;
+}
+
+// 以下より-------------------------------
+.creditInfo {
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  text-align: center;
+  padding: 20px 20px;
+  &__infoBox {
+    // 1.「登録クレジットカード情報」
+    &--box1 {
+      @include box1;
+    }
+  
+    // 2.クレカ情報
+    &--box2 {
+      @include box2;
+    }
+  
+    // 3.削除ボタン
+    &--box3 {
+      @include box3;
+      &--boxBtn {
+        height: 50px;
+        width: 250px;
+        margin: auto;
+        border: none;
+        border-radius: 5px;
+        padding-top: 9px;
+        background-color: #3CCACE;
+        .delete {
+          color: white;
+          padding-top: 5px;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

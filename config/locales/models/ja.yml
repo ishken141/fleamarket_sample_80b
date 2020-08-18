@@ -1,0 +1,13 @@
+ja:
+  activerecord:
+    attributes:
+      item:
+        title: 商品名
+        price: 販売価格
+        text: 商品の説明
+        brand: ブランド
+        condition: 商品の状態
+        leadtime: 配送の日数
+        category: カテゴリー
+        delivery: 配送方法
+        images: 商品画像

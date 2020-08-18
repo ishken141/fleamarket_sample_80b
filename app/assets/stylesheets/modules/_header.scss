@@ -1,0 +1,78 @@
+.header {
+  padding: 20px 250px;
+  // アイコン・検索フォーム
+  &__headerBox {
+    display: flex;
+    margin-bottom: 10px;
+    &--appIcon {
+      .iconBtn {
+        height: 50px;
+        margin-right: 30px;
+      }
+    }
+    // カテゴリー・ブランド
+    // 検索フォーム
+    &--searchBox {
+      height: 50px;
+      width: 100%;
+      &--formBox {
+        .Form {
+          display: flex;
+          margin-top: 5px;
+          &__input {
+            height: 40px;
+            width: 100%;
+          }
+          &__submit {
+            border: none;
+            padding: 5px;
+            background-color: #3CCACE;
+            .submit_image {
+              height: 30px;
+              width: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+  // ログイン・新規登録
+  &__headerBox2 {
+    &--various {
+      display: flex;
+      justify-content: space-between;
+      // カテゴリー・ブランド
+      .focus {
+        display: flex;
+        &__category {
+          margin-right: 40px;
+        }
+      }
+      // ログイン・新規登録
+      .log {
+        display: flex;
+        &__login {
+          margin-right: 40px;
+        }
+        &__new {
+          height: 130px;
+          width: 130px;
+          position: fixed;
+          bottom: 50px;
+          right: 30px;
+          border-radius: 5%;
+          text-align: center;
+          color: white;
+          font-weight: bold;
+          font-size: 20px;
+          padding-top: 15px;
+          background-color: #3CCACE;
+          .camera {
+            height: 60px;
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
+}

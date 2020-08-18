@@ -1,3 +1,5 @@
+
+# 元々の記述は全て削除して大丈夫です
 require "capistrano/setup"
 require "capistrano/deploy"
 require "capistrano/scm/git"

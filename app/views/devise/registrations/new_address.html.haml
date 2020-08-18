@@ -1,0 +1,21 @@
+.Devise.form
+  .Devise__main
+    .Devise__header
+      住所情報登録
+    = form_for @address do |f|
+      = render "devise/shared/error_messages", resource: @address
+      .field.text-input
+        = f.text_field :zipcode, placeholder: "郵便番号"
+        %span.separator
+      .field.text-input
+        = f.text_field :area, placeholder: "都道府県"
+        %span.separator
+      .field.text-input
+        = f.text_field :city, placeholder: "市町村"
+        %span.separator
+      .field.text-input
+        = f.text_field :street, placeholder: "その他(番地など)"
+        %span.separator
+      .actions.form-bottom
+        = f.submit "Sign up"
+    = render "devise/shared/links"

@@ -1,0 +1,9 @@
+.user-info-text
+  クレジットカード
+.form-group--card-number
+  .card-number
+    = "**** **** **** " + @card_info.last4
+  .card__body__main__data
+    = "有効期限" + @card_info.exp_month.to_s + " / " + @card_info.exp_year.to_s.slice(2,3) 
+  .form-group--credit_logo
+    = image_tag "/#{@card_src}", alt: @card_info.brand, width:"40", height: "25"

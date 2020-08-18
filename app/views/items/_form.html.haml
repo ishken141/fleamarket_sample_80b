@@ -1,0 +1,120 @@
+.container
+
+  = form_with model: @item, local: true do |f|
+
+    - if @item.errors.any?
+      .SettingitemForm__errors
+        %ul
+          - @item.errors.full_messages.each do |message|
+            %li.error= message
+
+    #image-box
+      #previews
+        - if @item.persisted?
+          - @item.images.each_with_index do |image, i|
+            = image_tag image.image.url, data: { index: i }, width: "100", height: '100'
+
+      -# =f.label :images, class:"image-field", for: "item_images_attributes_0_image" do
+      = icon "fas","camera"
+      %span.product_up 最大10枚までアップロードできます
+
+      =f.fields_for :images do |i|
+        .js-file_group{"data-index" => "#{i.index}"}
+          =i.file_field :image, class: 'js-file'
+          %span.js-remove 削除
+        - if @item.persisted?
+          = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
+
+      - if @item.persisted?
+        .js-file_group{"data-index" => "#{@item.images.count}"}
+          = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
+          %span.js-remove 削除
+
+    .form-group 以下の欄に必要な情報をご入力の上「出品する」を押してください。
+
+    .form-group
+      .temporaryclass
+        = f.label :title do
+          商品名
+          .icon 必須
+          -# - if @item.errors.include?(:title)
+          -#   %span.error= @item.errors.full_messages_for(:title).first
+          -#   = f.text_field :title, placeholder: "40文字まで", class: "title error-field"
+          -# - else
+          -#   %div
+        = f.text_field :title, maxlength: "40", placeholder: "40文字まで", class: "title"
+
+    .form-group
+      .temporaryclass
+        = f.label :text, class:"setumei" do
+          商品の説明
+          .icon 必須
+        = f.text_area :text, maxlength: "1000", placeholder: "商品の説明（1000文字以内）（色、素材、重さ、定価、注意点など）", class: "product"
+
+    .form-group
+      = f.hidden_field :stock, value:1
+
+    .form-group
+      .temporaryclass
+        = f.label :category_id do
+          カテゴリー
+          .icon 必須
+        .categorySelect
+          - if action_name == "new" || action_name == "create"
+            .category-parent
+              = f.select :category_id, options_for_select(@category_parents.collect{ |c| [c.name, c.id]}), {include_blank: '選択してください'}, class: 'category', id: 'parent_category'
+          - else
+            .category-parent
+              = f.select :category_id, options_for_select(@category_parents.collect{ |c| [c.name, c.id,  {"data-category": c.id}]}, @grandparent_category.id), {include_blank: '選択してください'}, class: "category", id: "parent_category"
+            .catagory-children
+              = f.select :category_id, options_for_select(@child_categories.collect{ |c| [c.name, c.id, {"data-category": c.id}]}, @child_category.id), {include_blank: "選択してください"}, class: "category", id: "child_category"
+            .catagory-grandchildren
+              = f.select :category_id, options_for_select(@grandchild_categories.collect{ |c| [c.name, c.id, {"data-category": c.id}]}, @category.id), {include_blank: "選択してください"}, class: "category", id: "grandchild_category"
+
+
+
+          = f.select :category_id, @category_parents.collect{ |p| [p.name, p.id] }, { include_blank: '選択してください'}, class: 'category', id: 'parent_category'
+
+
+    .form-group
+      .temporaryclass
+        = f.label :brand do
+          ブランド名
+          .icon2 任意
+        = f.text_field :brand, placeholder: "例）シャネル", class: "brand"
+
+    .form-group
+      .temporaryclass
+        =f.label :condition do
+          商品の状態
+          .icon 必須
+        =f.text_field :condition, class: "condition"
+
+    .form-group
+      .temporaryclass
+        =f.label :leadtime do
+          発送の日数
+          .icon 必須
+        =f.number_field :leadtime, class: "leadtime"
+
+    .form-group
+      .temporaryclass
+        = f.label :derivery_id do
+          配送方法
+          .icon 必須
+        = f.collection_select :delivery_id, Delivery.all, :id, :name, { include_blank: '選択してください'}, class: "delivery"
+
+    .form-group
+      .temporaryclass
+        = f.label :price do
+          販売価格
+          .icon 必須
+        = f.number_field :price, class: "price"
+
+    .form-group
+      .submit
+        =f.submit '出品する', class: 'submit-btn'
+
+    -# .form-group
+    -#   .draft
+    -#     =f.submit '下書きに保存', class: 'draft-btn'

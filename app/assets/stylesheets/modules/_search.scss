@@ -1,0 +1,13 @@
+.index_mypage { 
+  width: 900px; 
+  .content_2 { 
+    display: flex;
+    flex-wrap: wrap; 
+    overflow: scroll;
+  } 
+  .search_result { 
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 300px;
+  }
+}

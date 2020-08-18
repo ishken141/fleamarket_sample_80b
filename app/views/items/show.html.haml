@@ -1,0 +1,92 @@
+-# パンくず
+- breadcrumb :show
+
+.card
+  .card-menu
+    - if user_signed_in? && current_user.id == @item.user_id
+      .card-edit
+        = link_to "編集する", edit_item_path
+      .card-delete
+        = link_to "削除する", item_path(@item), method: :delete, class: "item_delete", data: { confirm: "本当に削除しますか？" }
+  .card-title
+    %h1.text-title
+      %span.card-text
+      = @item.title
+    %p.text-top
+      %span.card-text
+    - @item.images.each do |image|
+      = image_tag image.image.url, class: "item_image" if image.image.present?
+    %h4.text-center
+      %span.card-proce
+      = "¥#{@item.price}"
+    %p.text-bottom
+      %span.card-text
+      = @item.text
+  .card-cash
+    - unless user_signed_in? && current_user.id == @item.user_id
+      %h1.cash-cash= link_to "購入手続きへ", buy_path(@item)
+  .card-table
+    %table{:border => 1, :width => "50%"} 
+      %tr
+        %th 登録日時
+        %td= @item.created_at.strftime("%Y年%-m月%-d日")
+      %tr
+        %th 出品者
+        %td= link_to @item.user.name, user_path(@item.user.id)
+      %tr
+        %th カテゴリー
+        %td
+          = @item.category.parent.parent.name
+          %span >
+          = @item.category.parent.name
+          %span >
+          = @item.category.name
+
+      %tr
+        %th ブランド
+        %td= @item.brand
+      %tr
+        %th 商品の状態
+        %td= @item.condition
+      %tr
+        %th 在庫
+        %td= @item.stock
+      %tr
+        %th 配送料の負担
+        %td 送料込み(出品者負担)
+      %tr
+        %th 配送元の地域
+        %td 東京
+      %tr
+        %th 配送方法
+        %td= @item.delivery.name
+      %tr
+        %th 配送目安
+        %td=  "#{@item.leadtime}日で発送"
+
+  .btn-bar 
+    .btn-box
+      = render partial: "items/like", locals: { item: @item, like: @like }
+
+.Chat 
+  .MessageField
+    - @item.comments.each do |comment| 
+      .MessageInfo__userimage 
+        = image_tag comment.user.profile.image.url, class: "self_image"
+      .MessageBox 
+        .Message 
+          %h1= comment.text 
+        .MessageInfo
+          .MessageInfo__userName
+            %p= comment.user.name   
+
+  .warning
+    %p.text-waring
+      %span.card-warning 相手の事を考え丁寧なコメントを心がけましょう。
+      %br
+      %span.card-warning 不快な言葉遣いは利用制限や退会処分になる事があります。       
+  .form
+    = form_with model: [@item, @comment], local: true, id: "new_comment" do |f| 
+      = f.hidden_field :user_id, { value: current_user.id}
+      = f.text_area :text, class: "form-area" 
+      = f.submit "💬コメントする", class: "submit"

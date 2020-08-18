@@ -1,0 +1,32 @@
+.deleteText {
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  text-align: center;
+  padding: 20px 20px;
+  &__box1 {
+    .dele {
+      font-size: 20px;
+    }
+  }
+  &__box2 {
+    height: 100px;
+    width: 100%;
+    padding-top: 40px;
+    &--deleText {
+      height: 50px;
+      width: 250px;
+      margin: auto;
+      border: none;
+      border-radius: 5px;
+      padding-top: 9px;
+      background-color: #3CCACE;
+      .top {
+        color: white;
+        padding-top: 5px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+}

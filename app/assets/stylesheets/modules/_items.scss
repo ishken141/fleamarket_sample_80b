@@ -1,0 +1,443 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+}
+
+// メインページ
+.main {
+  &__box {
+    // 1.人生を変えるフリマアプリ
+    &--textBox {
+      // トップ画像
+      &--content0 {
+        background-image: image-url("/images/images/bg-mainVisual-pict_pc.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top center;
+        height: 560px;
+        width: 100%;
+        padding: 20px 50px;
+        display: flex;
+        align-items: center;
+        &--contentBox {
+          height: 450px;
+          // 人生を変えるフリマアプリ
+          &--text1 {
+            height: 200px;
+            margin-top: 100px;
+            font-size: 60px;
+            color: white;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+            &--text2 {
+              padding-top: 100px;
+            }
+          }
+          // FURIMAはだれでも〜
+          &--text3 {
+            height: 100px;
+            margin-top: 10px;
+            font-size: 18px;
+            color: white;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+            &--badgeBox {
+              display: flex;
+              .badge {
+                height: 100px;
+              }
+            }
+          }
+        }
+      }
+      // 2.FURIMAが選ばれる3つの理由
+      &--content1 {
+        height: 800px;
+        width: 100%;
+        padding: 20px;
+        //  text「FURIMAが選ばれる3つの理由」
+        &--introBox {
+          height: 100px;
+          text-align: center;
+          padding-top: 50px;
+          margin-bottom: 40px;
+          font-size: 26px;
+          font-weight: bold;
+          &--bar1 {
+            height: 4px;
+            width: 70px;
+            margin: auto;
+            margin-top: 10px;
+            background-color: #3CCACE;
+          }
+        }
+        // 3項目（横並び）
+        .introduction {
+          height: calc(800px - 100px);
+          display: flex;
+          justify-content: space-around;
+          // ①
+          &__reason1  {
+            width: 28%;
+            text-align: center;
+            // 画像①
+            &--image1 {
+              background-image: image-url("/images/images/pict-reason-01.jpg");
+              background-size: cover;
+              height: 330px;
+              &--greenBox1 {
+                height: 70px;
+                width: 70px;
+                border-radius: 4%;
+                padding-top: 10px;
+                font-weight: bold;
+                font-size: 30px;
+                color: white;
+                background-color: #3CCACE;
+              }
+            }
+            // 3分ですぐに出品
+            &--text1 {
+              margin-top: 25px;
+              font-size: 26px;
+              font-weight: bold;
+              .string1 {
+                color: #3CCACE;
+              }
+            }
+            // スマホで入力するだけで〜
+            .comment1 {
+              height: 150px;
+              text-align: left;
+              margin-top: 25px;
+              font-size: 20px;
+            }
+          }
+          // ②
+          &__reason2  {
+            width: 28%;
+            text-align: center;
+            // 画像②
+            &--image2 {
+              background-image: image-url("/images/images/pict-reason-02.jpg");
+              background-size: cover;
+              height: 330px;
+              &--greenBox2 {
+                height: 70px;
+                width: 70px;
+                border-radius: 4%;
+                padding-top: 10px;
+                font-weight: bold;
+                font-size: 30px;
+                color: white;
+                background-color: #3CCACE;
+              }
+            }
+            // シンプルで使いやすい
+            &--text2 {
+              margin-top: 25px;
+              font-size: 26px;
+              font-weight: bold;
+              .string2 {
+                color: #3CCACE;
+              }
+            }
+            // めんどくさい入力は〜
+            .comment2 {
+              height: 150px;
+              text-align: left;
+              margin-top: 25px;
+              font-size: 20px;
+            }
+          }
+          // ③
+          &__reason3  {
+            width: 28%;
+            text-align: center;
+            // 画像③
+            &--image3 {
+              background-image: image-url("/images/images/pict-reason-03.jpg");
+              background-size: cover;
+              height: 330px;
+              &--greenBox3 {
+                height: 70px;
+                width: 70px;
+                border-radius: 4%;
+                padding-top: 10px;
+                font-weight: bold;
+                font-size: 30px;
+                color: white;
+                background-color: #3CCACE;
+              }
+            }
+            // 手数料業界最安
+            &--text3 {
+              margin-top: 25px;
+              font-size: 26px;
+              font-weight: bold;
+              .string3 {
+                color: #3CCACE;
+              }
+            }
+            // 最大3%でお得に出品&購入！
+            .comment3 {
+              height: 150px;
+              text-align: left;
+              margin-top: 25px;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+      // 3.会員数日本一位
+      &--content2 {
+        height: 560px;
+        background-image: image-url("/images/images/bg-topMiddleDl-pict.jpg");
+        background-size: cover;
+        padding-top: 100px;
+        &--textBox1 {
+          .membership {
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            font-family: sans-serif;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+          }
+        }
+        &--textBox2 {
+          font-size: 18px;
+          font-weight: bold;
+          margin: 20px 0 40px 0;
+          .famous {
+            color: white;
+            text-shadow: 0 0 5px rgba(0,0,0,0.4);
+          }
+        }
+        &--badgeBox2 {
+          .badge2 {
+            height: 100px;
+          }
+        }
+      }
+      // 4.FURIMAの特徴 (※要チェック。画像が見切れる)
+      &--content3 {
+        // height: 100%;
+        // width: 100%;
+        &--head {
+          height: 150px;
+          font-size: 26px;
+          font-weight: bold;
+          text-align: center;
+          padding-top: 70px;
+          &--bar2 {
+            height: 4px;
+            width: 70px;
+            margin: auto;
+            margin-top: 10px;
+            background-color: #3CCACE;
+          }
+        }
+        &--body {
+          height: calc(800px - 150px);
+          padding: 0 60px 100px;
+          display: flex;
+          justify-content: space-around;
+          // 簡単に売り買いできる
+          &--featureText2 {
+            height: 100%;
+            width: 20%;
+            margin: 0 10px;
+            &--image2 {
+              background-image: image-url("/images/images/icon-01.png");
+              background-size: cover;
+              height: 50%;
+            }
+            &--text2 {
+              height: 20%;
+              padding-top: 30px;
+              font-size: 19px;
+              font-weight: bold;
+              text-align: center;
+            }
+            .comment2 {
+              font-size: 17px;
+              padding-top: 10px;
+              font-weight: 200;
+              text-align: left;
+            }
+          }
+          // 売上金は即日振込みに対応
+          &--featureText3 {
+            height: 100%;
+            width: 20%;
+            margin: 0 10px;
+            &--image3 {
+              background-image: image-url("/images/images/icon-03.png");
+              background-size: cover;
+              height: 50%;
+            }
+            &--text3 {
+              height: 20%;
+              padding-top: 30px;
+              font-size: 19px;
+              font-weight: bold;
+              text-align: center;
+            }
+            .comment3 {
+              font-size: 17px;
+              padding-top: 10px;
+              font-weight: 200;
+              text-align: left;
+            }
+          }
+          &--featureText4 {
+            height: 100%;
+            width: 20%;
+            margin: 0 10px;
+            &--image4 {
+              background-image: image-url("/images/images/icon-04.png");
+              background-size: cover;
+              height: 50%;
+            }
+            &--text4 {
+              height: 20%;
+              padding-top: 30px;
+              font-size: 19px;
+              font-weight: bold;
+              text-align: center;
+            }
+            .comment4 {
+              font-size: 17px;
+              padding-top: 10px;
+              font-weight: 200;
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+    // 5.商品一覧
+    &--itemBox {
+      &--itemIndex {
+        height: 550px;
+        background-color: #eeeeee;
+        padding-top: 80px;
+        &--text1 {
+          text-align: center;
+          font-size: 28px;
+          font-weight: bold; 
+        }   
+        &--text2 {
+          color: #3CCACE;
+          font-size: 24px;
+          text-align: center;
+          font-weight: bold;
+        }
+        &--textItem3 {
+          margin-top: 50px;
+          height: 335px;
+          display: flex;
+          .itemPickBox {
+            height: 80%;
+            width: 25%;
+            background-color: white;
+            &__item-image {
+              height: 60%;
+              background-color: gray;
+              img {
+                object-fit: cover;
+              }
+            }
+            .item_status {
+              padding: 20px 13px;
+              font-weight: bold;
+              &__stock {
+                font-size: 10px;
+              }
+              &__price {
+                font-size: 23px;
+              }
+            }
+          } 
+          .search_result { 
+            font-size: 30px;  
+            font-weight: bold;
+            padding-left: 570px; 
+          } 
+        }
+      }
+      // アーカイバ
+      &--archive {
+        height: 550px;
+        background-color: #eeeeee;
+        padding-top: 80px;
+        &--text1 {
+          text-align: center;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        &--text2 {
+          color: #3CCACE;
+          font-size: 24px;
+          text-align: center;
+          font-weight: bold;
+        }
+        &--textItem3 {
+          margin-top: 50px;
+          height: 335px;
+          display: flex;
+          .itemPickBox2 {
+            height: 80%;
+            width: 25%;
+            background-color: white;
+            &__item-image {
+              height: 60%;
+              background-color: gray;
+              img {
+                object-fit: cover;
+              }
+            }
+            .item_status2 {
+              padding: 20px 13px;
+              font-weight: bold;
+              &__stock {
+                font-size: 10px;
+              }
+              &__price {
+                font-size: 23px;
+              }
+            }
+          }
+        }
+      }
+    }
+    // 今すぐ無料ダウンロード
+    &--download {
+      background-image: image-url("/images/images/bg-appBanner-pict.jpg");
+      background-size: cover;
+      height: 400px;
+      &--DLtextBox {
+        font-weight: bold;
+        text-align: center;
+        padding-top: 100px;
+        &--comment1 {
+          color: white;
+          font-size: 24px;
+          text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        }
+        &--comment2 {
+          color: white;
+          font-size: 35px;
+          text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        }
+        &--badgeBox3 {
+          .badge3 {
+            height: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+

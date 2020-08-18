@@ -1,0 +1,253 @@
+.main
+  -# 1.人生を変えるフリマアプリ
+  .main__box
+    .main__box--textBox
+      .main__box--textBox--content0
+        .main__box--textBox--content0--contentBox
+          .main__box--textBox--content0--contentBox--text1
+            .main__box--textBox--content0--contentBox--text1--text2
+              人生を変えるフリマアプリ
+          .main__box--textBox--content0--contentBox--text3
+            FURIMAはだれでもかんたんに出品・購入できる
+            %br
+            フリマアプリです
+            .main__box--textBox--content0--contentBox--text3--badgeBox
+              %body.badge
+                = link_to image_tag ( 'Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg'), size: "190x95"
+                = link_to image_tag ( 'google-play-badge.png'), size: "240x95"
+      -# 2.FURIMAが選ばれる3つの理由
+      .main__box--textBox--content1
+        .main__box--textBox--content1--introBox
+          FURIMAが選ばれる3つの理由
+          .main__box--textBox--content1--introBox--bar1
+        %ul.introduction
+          %li.introduction__reason1
+            .introduction__reason1--image1
+              .introduction__reason1--image1--greenBox1
+                1
+            .introduction__reason1--text1
+              %span.string1
+                3分
+              ですぐに出品
+            %p.comment1
+              スマホで入力するだけで簡単に出品できる！
+          %li.introduction__reason2
+            .introduction__reason2--image2
+              .introduction__reason2--image2--greenBox2
+                2
+            .introduction__reason2--text2
+              %span.string2
+                シンプル
+              で使いやすい
+            %p.comment2
+              めんどくさい入力は必要なく、検索も購入もスムーズ！
+          %li.introduction__reason3
+            .introduction__reason3--image3
+              .introduction__reason3--image3--greenBox3
+                3
+            .introduction__reason3--text3
+              手数料
+              %span.string3
+                業界最安
+            %p.comment3
+              最大3%でお得に出品&購入！
+      -# 3.会員数日本一位
+      .main__box--textBox--content2
+        .main__box--textBox--content2--textBox1
+          %p.membership
+            会員数日本一位
+        .main__box--textBox--content2--textBox2
+          %p.famous
+            FURIMAは、フリマアプリで最も人気。
+            %br
+            出品・購入回数も業界最多です！
+            %br
+            ほしかったあの商品に出会えるかもしれません。
+        .main__box--textBox--content2--textBox2--badgeox2
+          %body.badge2
+            = link_to image_tag ( 'Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg'), size: "190x95"
+            = link_to image_tag ( 'google-play-badge.png'), size: "240x95"
+      -# 4.FURIMAの特徴
+      .main__box--textBox--content3
+        .main__box--textBox--content3--head
+          FURIMAの特徴
+          .main__box--textBox--content3--head--bar2
+        .main__box--textBox--content3--body
+          .main__box--textBox--content3--body--featureText2
+            .main__box--textBox--content3--body--featureText2--image2
+            .main__box--textBox--content3--body--featureText2--text2
+              簡単に売り買いできる
+            %p.comment2
+              スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+          .main__box--textBox--content3--body--featureText3
+            .main__box--textBox--content3--body--featureText3--image3
+            .main__box--textBox--content3--body--featureText3--text3
+              売上金は即日振込みに対応
+            %p.comment3
+              午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+          .main__box--textBox--content3--body--featureText4
+            .main__box--textBox--content3--body--featureText4--image4
+            .main__box--textBox--content3--body--featureText4--text4
+              様々な支払いに対応
+            %p.comment4
+              お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+    -# 5.商品一覧
+    .main__box--itemBox
+      .main__box--itemBox--itemIndex
+        .main__box--itemBox--itemIndex--text1
+          ピックアップカテゴリー
+        .main__box--itemBox--itemIndex--text2
+          = link_to '新規投稿商品', '#'
+        .main__box--itemBox--itemIndex--textItem3
+          - @items.first(5).each do |item|
+            - unless item.stock == 0
+              -# 仮クラス。商品登録機能完了後以下コメント外す
+              = link_to item_path(item) do
+                .itemPickBox
+                  .itemPickBox__item-image
+                    - item.images.first(1).each do |image|
+                      = image_tag image.image.url, height: "100%", width: "100%", class: "item_image" if image.image.present?
+                  %ul.item_status
+                    %li.item_status__stock
+                      = "在庫: #{item.stock}" #ここは条件分岐在庫の有無を表示する
+                    %li.item_status__price
+                      価格:
+                      = item.price
+                    %li.item_status__title
+                      商品名:
+                      = link_to item.title, item_path(item)
+                    %li.item_status__title
+                      出品者:
+                      = link_to item.user.name, user_path(item.user.id)
+                    %li.item_status__title
+                      登録日:
+                      = item.created_at.strftime("%Y年%-m月%-d日")
+                    %li.item_status__title
+                      いいね数:
+                      = item.likes.count
+              - if user_signed_in? && current_user.id == item.user_id
+                メニュー
+                = link_to "編集", root_path, class: "item_edit"
+                = link_to "削除", item_path(item), method: :delete, class: "item_delete", data: { confirm: "本当に削除しますか？" }
+            - else
+              .itemPickBox
+                .itemPickBox__item-image
+                  - item.images.first(1).each do |image|
+                    -# 画像サイズ(size:)は仮値
+                    = image_tag image.image.url, height: "100%", width: "100%", class: "item_image" if image.image.present?
+                  %ul.item_status
+                    %li.item_status__stock
+                      完売
+                    %li.item_status__price
+                      価格:
+                      = item.price
+                    %li.item_status__title
+                      商品名:
+                      = item.title
+                      %li.item_status__title
+                      出品者:
+                      = link_to item.user.name, user_path(item.user.id)
+                      %li.item_status__title
+                      登録日:
+                      = item.created_at.strftime("%Y年%-m月%-d日")
+                      %li.item_status__title
+                      いいね数:
+                      = item.likes.count
+
+      .main__box--itemBox--archive
+        .main__box--itemBox--archive--text1
+          ピックアップブランド
+        .main__box--itemBox--archive--text2
+          = link_to 'アーカイバ', '#'
+        .main__box--itemBox--archive--textItem3
+          - @items.first(5).each do |item|
+            - unless item.stock == 0
+              -# 仮クラス。商品登録機能完了後以下コメント外す
+
+              = link_to item_path(item) do
+                .itemPickBox2
+                  .itemPickBox2__item-image
+                    - item.images.first(1).each do |image|
+                      = image_tag image.image.url, height: "100%", width: "100%", class: "item_image" if image.image.present?
+                  %ul.item_status2
+                    %li.item_status2__stock
+                      = "在庫: #{item.stock}" #ここは条件分岐在庫の有無を表示する
+                    %li.item_status2__price
+                      価格:
+                      = item.price
+                    %li.item_status2__title
+                      商品名:
+                      = link_to item.title, item_path(item)
+                    %li.item_status__title
+                      出品者
+                      = link_to item.user.name, user_path(item.user.id)
+                    %li.item_status__title
+                      登録日:
+                      = item.created_at.strftime("%Y年%-m月%-d日")
+                    %li.item_status__title
+                      いいね数:
+                      = item.likes.count
+
+            - else
+              .itemPickBox2
+                .itemPickBox2__item-image
+                  - item.images.first(1).each do |image|
+                    = image_tag image.image.url, height: "100%", width: "100%", class: "item_image" if image.image.present?
+                %ul.item_status2
+                  %li.item_status__stock
+                    完売
+                  %li.item_status2__price
+                    価格:
+                    = item.price
+                  %li.item_status2__title
+                    商品名:
+                    = link_to item.title, item_path(item)
+
+                  %li.item_status__title
+                    出品者
+                    = link_to item.user.name, user_path(item.user.id)
+                  %li.item_status__title
+                    登録日:
+                    = item.created_at.strftime("%Y年%-m月%-d日")
+                  %li.item_status__title
+                    いいね数:
+                    = item.likes.count
+
+    -# 6.今すぐ無料ダウンロード
+    .main__box--download
+      .main__box--download--DLtextBox
+        .main__box--download--DLtextBox--comment1
+          だれでもかんたん、人生を変えるフリマアプリ
+        .main__box--download--DLtextBox--comment2
+          今すぐ無料ダウンロード！
+        .main__box--download--DLtextBox--badgeBox3
+          %body.badge3
+            = link_to image_tag ( 'Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg'), size: "190x95"
+            = link_to image_tag ( 'google-play-badge.png'), size: "240x95"
+
+
+  -# .main__box--itemBox--itemIndex
+  -#       .main__box--itemBox--itemIndex--item
+  -#         - @items.each do |item, image|
+  -#           - if item.stock == 0
+  -#             %ul.item_status
+  -#               %li.item_status__stock
+  -#                 SOLD
+  -#               %li.item_status__price
+  -#                 価格:
+  -#                 = item.price
+  -#               %li.item_status__title
+  -#                 商品名:
+  -#                 = item.title
+  -#           - else
+  -#             -# = image_tag image.image.url, class: "item_image" if image.image.present?
+  -#             %ul.item_status
+  -#               %li.item_status__price
+  -#                 価格:
+  -#                 = item.price
+  -#               %li.item_status__title
+  -#                 商品名:
+  -#                 = item.title
+  -#     .main__box--itemBox--archive
+  -#       アーカイブ？
+
