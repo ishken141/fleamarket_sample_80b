@@ -72,7 +72,7 @@
   .MessageField
     - @item.comments.each do |comment| 
       .MessageInfo__userimage 
-        = image_tag comment.user.profile.image.url, class: "self_image"
+        = image_tag comment.user.profile.image.url, class: "self_image" if comment.user.profile.image.present?
       .MessageBox 
         .Message 
           %h1= comment.text 

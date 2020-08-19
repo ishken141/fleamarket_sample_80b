@@ -103,34 +103,34 @@
 } 
 
 .Chat {
-  width: 70vw;
+  width: 50vw;
   height: 300px; 
   display: inline-block; 
-  margin-left: 220px;
+  margin-left: 500px;
   border: 1px solid #fff; 
 } 
 
 .self_image { 
-  height: 50px; 
-  width: 50px; 
+  height: 60px; 
+  width: 60px; 
   border-radius: 50%;
 }
 
 .MessageField {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   overflow: scroll; 
 }
 
 .MessageBox {
   background-color: #f5f5f5;
-  margin-bottom: 3px;
+  margin-bottom: 10px;
   padding: 10px;
   color: #2f2725;
-  border-radius: 3px;
-  width: 90%; 
+  border-radius: 10px; 
   position: relative;
-  margin-top: 15px;
+  margin-top: 15px; 
+  display: inline-block;
 } 
 .MessageBox::before{
   content: '';
@@ -158,8 +158,9 @@
 }
 
 .Message{ 
-  font-size: 15px; 
-  width: 100%; 
+  font-size: 20px; 
+  padding: 10px;
+  // width: 100%; 
 }
 
 .MessageInfo{
@@ -168,7 +169,7 @@
   justify-content: flex-end;
   &__userName {
     font-size: 15px;
-    margin-right: 10px;
+    margin-right: 0px;
   }
 } 
 .warning { 

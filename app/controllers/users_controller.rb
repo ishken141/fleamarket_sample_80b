@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :move_to_index, except: [:index, :search]
   def new
     @user = User.new
   end
@@ -19,5 +20,9 @@ class UsersController < ApplicationController
   
   def likes 
   end 
-
+  def move_to_index
+    unless user_signed_in?
+      redirect_to items_path
+    end
+  end
 end
