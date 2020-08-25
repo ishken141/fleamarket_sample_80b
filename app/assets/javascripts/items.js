@@ -115,11 +115,12 @@ $(function(){
     if( 300 <= price && price <= 9999999) {
       var fee = Math.floor(price * 0.03);
       var profit = (price - fee);
-      $(".fee-span").text(fee);
-      $(".profit-span").text(profit);
+      $(".fee-span").text(`¥ ${fee}`);
+      $(".profit-span").text(`¥ ${profit}`)
     }else{
       $(".fee-span").text('');
       $(".profit-span").text('');
+      
     }
   })
 
