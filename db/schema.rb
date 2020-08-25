@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2020_08_23_065329) do
     t.bigint "category_id"
     t.bigint "user_id"
     t.bigint "delivery_id"
-    t.string "reservation_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_items_on_category_id"
