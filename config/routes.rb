@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       match "detail" => "items#detail",   via: [:get, :post]
       get   'get_category_children',      defaults: { format: 'json' }
       get   'get_category_grandchildren', defaults: { format: 'json' }
-      get   "get_delively_fee",           defaults: { format: 'json' }
+      get   "get_delivery_fee",           defaults: { format: 'json' }
     end
 
     member do

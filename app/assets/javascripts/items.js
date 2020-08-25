@@ -110,31 +110,35 @@ $(function() {
 
 // 販売手数料の記述
 $(function(){
-  $("#item_price").on('keyup', function(){
-    var price = $("#item_price").val();
-    if( 300 <= price && price <= 9999999) {
-      var fee = Math.floor(price * 0.03);
-      var profit = (price - fee);
-      $(".fee-span").text(`¥ ${fee}`);
-      $(".profit-span").text(`¥ ${profit}`)
-    }else{
-      $(".fee-span").text('');
-      $(".profit-span").text('');
-      
-    }
-  })
-
+  function Delivery(delivery) {
+    $(".shippingfee-span").text(delivery.price)
+    $("#item_price").on('keyup', function(){
+      var price = $("#item_price").val();
+      if( 300 <= price && price <= 9999999) {
+        var fee = Math.floor(price * 0.03);
+        // var delivery = {delivery.price};
+        var profit = (price - fee - delivery.price);
+        $(".fee-span").text(`¥ ${fee}`);
+        $(".profit-span").text(`¥ ${profit}`);
+        $(".shippingfee-span").text(delivery.price);
+      }else{
+        $(".fee-span").text('');
+        $(".profit-span").text('');
+      }
+    })
+  }
   $("#item_delivery_id").change(function () {
     let delivery_id = $(this).val();
     if (delivery_id != "") {
       $.ajax({
-        url:     "get_delivery_fee",
+        url:      "get_delivery_fee",
         dateType: "JSON",
         type:     "GET",
         data:     { delivery_id: delivery_id}
       })
       .done(function(delivery) {
-        $(".shippingfee-span").text(`¥ ${delivery.price}`)
+        return Delivery(delivery);
+        // $(".shippingfee-span").text(`¥ ${delivery.price}`)
       })
       .fail(function() {
         alert("失敗しました")
